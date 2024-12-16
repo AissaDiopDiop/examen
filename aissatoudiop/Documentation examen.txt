@@ -1,0 +1,97 @@
+Documentation de l'application
+
+Importations :
+Les bibliothèques nécessaires pour le fonctionnement de l'application sont importées, y compris celles pour le carrousel, les polices Google, la gestion des préférences, 
+et le partage.
+
+Déclaration des Variables :
+favorisList : Liste pour stocker les produits favoris de l'utilisateur.
+Méthode _navigateToProfile :
+Gère la navigation vers la page de profil et affiche un message d'erreur en cas d'échec.
+Widgetbuild :
+Construit l'interface utilisateur, y compris l'AppBar, le tiroir de navigation, le corps de la page, et le menu en bas.
+Menu Latéral (Monmenu) :
+Comprend l'en-tête et les éléments de menu avec des actions associées.
+ClasseProduit :
+Affiche un carrousel d'images de produits et permet de naviguer entre les différentes images.
+Fonctions de Carrousel :
+onButtonPressed et onPageChanged mettent à jour l'état basé sur les interactions de l'utilisateur avec le carrousel.
+
+-CatégorieBoutons
+Fonctionnalité : Affiche une liste de boutons pour sélectionner des catégories de produits.
+Méthode principale : fetchCategories() - Récupère les catégories depuis l'API et notifie la sélection de la catégorie "Accessoires Informatiques".
+-ProduitSection
+Fonctionnalité : Affiche les produits selon la catégorie sélectionnée.
+Méthodes principales :
+fetchProduits() - Récupère les produits de l'API selon la catégorie.
+updateSelectedCategory(int categoryId) - Met à jour la catégorie sélectionnée et recharge les produits.
+toggleFavorite(Map<String, dynamic> produit) - Gère l'ajout ou la suppression de produits dans la liste des favoris.
+-ProduitCard
+Fonctionnalité : Affiche les détails d'un produit dans un format de carte.
+Méthodes principales :
+toggleFavorite() - Gère l'état favori du produit.
+navigateToDetails(BuildContext context) - Navigue vers la page de détails du produit.
+-Produit
+Fonctionnalité : Modèle représentant un produit.
+Méthode principale : fromJson(Map<String, dynamic> json) - Crée un objet Product à partir d'une réponse JSON.
+-ProduitService
+Fonctionnalité : Service pour interagir avec l'API des produits.
+Méthodes principales :
+fetchProducts(...) - Récupère la liste des produits.
+fetchProductDetails(...) - Récupère les détails d'un produit spécifique.
+-Page de détail du produit
+Fonctionnalité : Affiche les détails d'un produit sélectionné.
+Méthode principale : Utilise un FutureBuilder pour charger les détails du produit.
+-FavorisPage
+Fonctionnalité : Affiche la liste des produits favoris.
+Méthode principale : Permet de retirer un produit des favoris.
+-MonMenuEnBas
+Description : Widget de navigation en bas de l'écran permettant de naviguer entre différentes pages de l'application.
+Propriétés :
+_selectedIndex : Index de la page actuellement sélectionnée.
+_pages : Liste des widgets représentant les différentes pages (Accueil, Recherche, Panier, Profil).
+Méthodes :
+_onItemTapped(int index) : Gère la sélection d'un élément du menu. Met à jour l'index sélectionné et navigue vers la page correspondante.
+_buildNavItem(IconData icon, String label, int index) : Crée un élément de navigation avec une icône et un label.
+ Page de recherche
+Description : Page permettant de rechercher des produits.
+Propriétés :
+_searchController : Contrôleur pour le champ de recherche.
+_products : Liste des produits récupérés en fonction de la recherche.
+_isLoading : Indicateur de chargement lors de la recherche.
+Méthodes :
+_searchProducts(String query) : Effectue une recherche de produits via l'API en fonction de la requête.
+Interface utilisateur :
+Champ de recherche avec un indicateur de chargement et affichage des résultats sous forme de liste.
+_MonPanierPage
+Description : Page affichant le contenu du panier de l'utilisateur.
+Interface utilisateur :
+Affiche une icône de panier et un message indiquant que le panier est vide si aucun produit n'est ajouté.
+
+ConnexionPage : Page de connexion pour les utilisateurs, comprenant des champs pour l'email et le mot de passe, ainsi qu'une fonctionnalité de gestion des erreurs.
+Méthodes : _validateFields() pour valider les champs, _login() pour gérer la connexion via une API, et build() pour construire l'interface utilisateur.
+UI : Comprend une interface utilisateur élégante et réactive avec des interactions utilisateur simples.
+
+PageInscription
+Description : Classe représentant la page d'inscription où les utilisateurs peuvent créer un compte.
+Champs :
+nomController, prenomController, emailController, passwordController, confirmPasswordController : Contrôleurs pour les champs de saisie.
+_obscureText, _confirmObscureText : Booleans pour gérer la visibilité des mots de passe.
+dGreen, grayColor, redColor : Couleurs personnalisées.
+_nomError, _prenomError, _emailError, _passwordError, _confirmPasswordError : Variables pour stocker les messages d'erreur.
+Méthodes :
+_validateFields() : Valide les champs de saisie et retourne un booléen.
+_register() : Gère l'inscription et la navigation vers la page d'accueil si les champs sont valides.
+build() : Méthode qui construit l'interface utilisateur, incluant des champs de texte et un bouton d'inscription.
+
+ProfilePage
+Description : Classe représentant la page de profil d'un utilisateur connecté.
+Champs :
+nom, prenom, email : Informations de l'utilisateur, passées lors de la création de l'instance.
+Méthodes :
+create() : Méthode statique qui récupère les informations de l'utilisateur depuis SharedPreferences.
+_logout(BuildContext context) : Gère la déconnexion de l'utilisateur.
+_deleteAccount(BuildContext context) : Gère la suppression du compte avec confirmation via un dialogue.
+_goToHome(BuildContext context) : Navigue vers la page d'accueil.
+build() : Méthode qui construit l'interface utilisateur pour afficher les informations de l'utilisateur et inclure des boutons pour la déconnexion et la suppression du compte.
+Pour finir j'ai ma page Splash_Screen c'est la page qui vient avant la pqge d'accueil que j'ai integrer dans le main.dart ou se trouve aussi la la direction de la page d'accueil. 
